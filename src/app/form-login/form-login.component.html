@@ -1,0 +1,35 @@
+<img src="https://d1nzpkv5wwh1xf.cloudfront.net/640/k-577a160c047c994bb7e5b397/20170830-/angular-2.png" width="100%" height="auto">
+<h2>Form Login</h2>
+<form id="input" class="col-md-6 offset-md-3" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" formControlName="email">
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert"
+       *ngIf="loginForm.get('email').invalid
+       && loginForm.get('email').touched">
+    Invalid Email !
+  </div>
+
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" formControlName="password">
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert"
+       *ngIf="loginForm.get('password').invalid
+       && loginForm.get('password').touched">
+    Invalid Password !
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+  <!--  {{registerForm.value | json}}-->
+</form>
