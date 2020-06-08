@@ -5,7 +5,8 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" formControlName="email">
+      <input type="email" class="form-control is-valid" id="inputEmail3" formControlName="email"
+             [ngClass]="loginForm.get('email').invalid ? 'is-invalid' : 'is-valid'">
     </div>
   </div>
   <div class="alert alert-danger" role="alert"
@@ -17,7 +18,8 @@
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" formControlName="password">
+      <input type="password" class="form-control" id="inputPassword3" formControlName="password"
+             [ngClass]="loginForm.get('password').invalid ? 'is-invalid' : 'is-valid'">
     </div>
   </div>
   <div class="alert alert-danger" role="alert"
@@ -28,7 +30,7 @@
 
   <div class="form-group row">
     <div class="col-sm-10">
-      <button class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Sign in</button>
     </div>
   </div>
   <!--  {{registerForm.value | json}}-->
