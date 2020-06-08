@@ -1,0 +1,109 @@
+<img src="https://d1nzpkv5wwh1xf.cloudfront.net/640/k-577a160c047c994bb7e5b397/20170830-/angular-2.png" width="100%" height="auto">
+<h2>Form Register</h2>
+<form id="input" [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="col-md-6 offset-md-3">
+
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" formControlName="email">
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert"
+         *ngIf="registerForm.get('email').invalid &&
+         registerForm.get('email').touched">
+    Invalid email !
+  </div>
+
+  <div class="form-group row" formGroupName="pwGroup">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" formControlName="password">
+    </div>
+  </div>
+
+  <div class="form-group row" formGroupName="pwGroup">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" formControlName="confirmPassword">
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert"
+       *ngIf="registerForm.hasError('passwordNotMatch', ['pwGroup'])
+       && registerForm.get('pwGroup').touched">
+    Password does not match !
+  </div>
+
+  <div class="form-group row">
+    <label for="inputState" class="col-sm-2 col-form-label">Country</label>
+    <div class="col-sm-10">
+    <select id="inputState" class="form-control" formControlName="country">
+      <option>Choose...</option>
+      <option value="Việt Nam">Việt Nam</option>
+      <option value="USA">US</option>
+    </select>
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert"
+       *ngIf="registerForm.get('country').invalid &&
+         registerForm.get('country').touched">
+    Country may not be blank !
+  </div>
+
+  <div class="form-group row">
+    <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="inputAge" formControlName="age">
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert"
+        *ngIf="registerForm.get('age').invalid
+        && registerForm.get('age').touched">
+    Invalid age !
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="gridRadios1" value="Male" checked formControlName="gender">
+          <label class="form-check-label" for="gridRadios1">
+            Male
+          </label>
+
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="gridRadios2" value="Female" formControlName="gender">
+          <label class="form-check-label" for="gridRadios2">
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="alert alert-danger" role="alert"
+        *ngIf="registerForm.get('gender').invalid
+        && registerForm.get('gender').touched">
+    Gender may not be blank !
+  </div>
+
+  <div class="form-group row">
+    <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputPhone" formControlName="phone">
+    </div>
+  </div>
+  <div class="alert alert-danger" role="alert"
+        *ngIf="registerForm.get('phone').invalid
+        && registerForm.get('phone').touched">
+    Invalid phone !
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+<!--  {{registerForm.value | json}}-->
+</form>
